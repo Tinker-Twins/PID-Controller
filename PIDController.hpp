@@ -66,7 +66,7 @@ class PIDController {
                 err_hist.push(err); // Update error history
                 err_int += err; // Integrate error
                 if (err_hist.size() > kS) { // Jacketing logic to prevent integral windup
-                    err_hist.pop(); // Rolling FIFO buffer
+                    err_int -= err_hist.pop(); // Rolling FIFO buffer
                 }
                 err_dif = (err - err_prev); // Error difference
                 float u = (kP * err) + (kI * err_int * dt) + (kD * err_dif / dt); // PID control law
