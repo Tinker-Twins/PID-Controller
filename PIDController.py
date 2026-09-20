@@ -56,6 +56,6 @@ class PIDController:
                 self.err_int -= self.err_hist.get() # Rolling FIFO buffer
             self.err_dif = (err - self.err_prev) # Error difference
             u = (self.kP * err) + (self.kI * self.err_int * dt) + (self.kD * self.err_dif / dt) # PID control law
-            self.err_prev = err # Update previos error term
+            self.err_prev = err # Update previous error term
             self.t_prev = t # Update timestamp
             return u # Control signal
